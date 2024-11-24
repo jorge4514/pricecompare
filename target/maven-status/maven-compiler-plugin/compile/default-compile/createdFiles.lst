@@ -1,0 +1,10 @@
+com\supermarketapi\supermarketapi\SupermarketapiApplication.class
+com\supermarketapi\supermarketapi\markets\ConsumApi.class
+com\supermarketapi\supermarketapi\dao\Product.class
+com\supermarketapi\supermarketapi\bo\service\BaseSupermarketApi.class
+com\supermarketapi\supermarketapi\markets\MercadonaApi.class
+com\supermarketapi\supermarketapi\config\AppConfig.class
+com\supermarketapi\supermarketapi\controller\ProductController.class
+com\supermarketapi\supermarketapi\bo\service\HttpRequestService.class
+com\supermarketapi\supermarketapi\bo\service\ProductService.class
+com\supermarketapi\supermarketapi\bo\interfaces\SupermarketApi.class
