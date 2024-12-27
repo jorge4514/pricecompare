@@ -1,0 +1,128 @@
+"products": [
+        {
+            "id": 5932,
+            "productType": 1,
+            "code": "7080604",
+            "ean": "8414807514219",
+            "productData": {
+                "name": "Leche Semidesnatada. Brik",
+                "brand": {
+                    "id": "CONSUM",
+                    "name": "CONSUM"
+                },
+                "url": "https://tienda.consum.es/es/p/leche-semidesnatada-brik/7080604",
+                "imageURL": "https://cdn-consum.aktiosdigitalservices.com/tol/consum/media/product/img/300x300/7080604.jpg?t=20241219080034",
+                "description": "Leche Semidesnatada. Brik 1 L",
+                "seo": "leche-semidesnatada-brik",
+                "attributeGroups": [
+                    {
+                        "code": "group.attribute.default",
+                        "image": "",
+                        "name": "Información del producto",
+                        "tooltip": "",
+                        "visibility": true,
+                        "attributes": [
+                            {
+                                "code": "filter.id.brand.distributor",
+                                "languages": [
+                                    {
+                                        "lang": "00",
+                                        "values": [
+                                            "1"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "code": "hidden.midiadia",
+                                "languages": [
+                                    {
+                                        "lang": "00",
+                                        "values": [
+                                            "1"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "attributes": [
+                    {
+                        "code": "filter.id.brand.distributor",
+                        "languages": [
+                            {
+                                "lang": "00",
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "code": "hidden.midiadia",
+                        "languages": [
+                            {
+                                "lang": "00",
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "format": "",
+                "novelty": false,
+                "featured": false,
+                "sponsored": false,
+                "actions": [],
+                "containAllergensIntolernacies": false,
+                "availability": "1"
+            },
+            "media": [
+                {
+                    "url": "https://cdn-consum.aktiosdigitalservices.com/tol/consum/media/product/img/300x300/7080604_001.jpg?t=20220406040006",
+                    "order": 1,
+                    "type": "P"
+                },
+                {
+                    "url": "https://cdn-consum.aktiosdigitalservices.com/tol/consum/media/product/img/300x300/7080604_002.jpg?t=20210327040004",
+                    "order": 2,
+                    "type": "P"
+                },
+                {
+                    "url": "https://cdn-consum.aktiosdigitalservices.com/tol/consum/media/product/img/300x300/7080604_003.jpg?t=20210327040004",
+                    "order": 3,
+                    "type": "P"
+                }
+            ],
+            "priceData": {
+                "prices": [
+                    {
+                        "id": "PRICE",
+                        "value": {
+                            "centAmount": 0.83000,
+                            "centUnitAmount": 0.83
+                        }
+                    }
+                ],
+                "taxPercentage": 2.00,
+                "priceUnitType": "",
+                "unitPriceUnitType": "1 L",
+                "minimumUnit": 1.00,
+                "maximumUnit": 60.00,
+                "intervalUnit": 1.00
+            },
+            "purchaseData": {
+                "allowComments": false
+            },
+            "categories": [
+                {
+                    "id": 2075,
+                    "name": "Semidesnatada",
+                    "type": 0
+                }
+            ],
+            "offers": [],
+            "coupons": []
+        },

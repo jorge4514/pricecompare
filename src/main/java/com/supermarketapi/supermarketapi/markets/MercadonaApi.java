@@ -72,6 +72,7 @@ public class MercadonaApi extends BaseSupermarketApi {
                 String brand = (String) hit.get("brand");
                 double price = Double.parseDouble((String) ((Map<String, Object>) hit.get("price_instructions")).get("unit_price"));
                 String previousPriceStr = (String) ((Map<String, Object>) hit.get("price_instructions")).get("previous_unit_price");
+                double unit_size = (double) ((Map<String, Object>) hit.get("price_instructions")).get("unit_size");
                 double previous_unit_price = 0.0;
 
                 if (previousPriceStr != null) {
@@ -88,6 +89,7 @@ public class MercadonaApi extends BaseSupermarketApi {
 
                 // Crear la instancia de Product y añadirla a la lista
                 Product product = new Product(name, brand, price, previous_unit_price, shareUrl, picture, "mercadona");
+                product.setUnit_size(unit_size);
                 products.add(product);
             }
 

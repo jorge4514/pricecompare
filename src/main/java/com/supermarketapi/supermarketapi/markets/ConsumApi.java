@@ -20,7 +20,7 @@ import org.springframework.http.ResponseEntity;
 @Service
 public class ConsumApi extends BaseSupermarketApi {
 
-    private static final String BASE_URL = "https://tienda.consum.es/api/rest/V1.0/catalog/searcher/products";
+    private static final String BASE_URL = "https://tienda.consum.es/api/rest/V1.0/catalog/product";
 
     @Autowired
     public ConsumApi(RestTemplate restTemplate) {
@@ -43,6 +43,9 @@ public class ConsumApi extends BaseSupermarketApi {
                 .queryParam("q", query)
                 .queryParam("limit", 12)
                 .queryParam("showRecommendations", false)
+                .queryParam("offset", 0)
+                .queryParam("page", 1)
+                .queryParam("orderById", 13)
                 .toUriString();
 
         // Configurar el encabezado para JSON
@@ -55,10 +58,10 @@ public class ConsumApi extends BaseSupermarketApi {
             ResponseEntity<Map> response = restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(headers), Map.class);
 
             // Extraer la lista de productos del campo "products"
-            Map<String, Object> catalog = (Map<String, Object>) response.getBody().get("catalog");
+            //Map<String, Object> catalog = (Map<String, Object>) response.getBody().get("catalog");
 
             // Extraer la lista de productos desde la clave "products" dentro de "catalog"
-            List<Map<String, Object>> productsData = (List<Map<String, Object>>) catalog.get("products");
+            List<Map<String, Object>> productsData = (List<Map<String, Object>>) response.getBody().get("products");
 
             // Crear la lista de productos mapeados
             List<Product> products = new ArrayList<>();

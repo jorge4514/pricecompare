@@ -4,11 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.5</version>
-        <relativePath/> <!-- lookup parent from repository -->
-    </parent>
+	    <groupId>org.springframework.boot</groupId>
+	    <artifactId>spring-boot-starter-parent</artifactId>
+	    <version>2.7.14</version> <!-- Usa una versión de Spring Boot 2.7.x -->
+	    <relativePath/>
+	</parent>
+
 
     <groupId>com.supermarketapi</groupId>
     <artifactId>supermarketapi</artifactId>
@@ -48,9 +49,9 @@
 
         <!-- Tomcat Embedded for WAR packaging -->
         <dependency>
-            <groupId>org.apache.tomcat.embed</groupId>
-            <artifactId>tomcat-embed-core</artifactId>
-            <scope>provided</scope>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope> <!-- Configurado para usar Tomcat externo -->
         </dependency>
     </dependencies>
 
@@ -70,6 +71,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>${start-class}</mainClass> <!-- No inicia Tomcat embebido -->
+                </configuration>
             </plugin>
         </plugins>
     </build>

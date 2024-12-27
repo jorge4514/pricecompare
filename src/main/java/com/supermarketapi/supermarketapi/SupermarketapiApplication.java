@@ -8,14 +8,15 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 
 @SpringBootApplication
 public class SupermarketapiApplication extends SpringBootServletInitializer {
+	
+	@Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(SupermarketapiApplication.class);
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(SupermarketapiApplication.class, args);
     }
-
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(SupermarketapiApplication.class);
-    }
+    
 }
 

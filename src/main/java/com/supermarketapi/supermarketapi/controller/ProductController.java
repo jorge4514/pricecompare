@@ -39,8 +39,10 @@ public class ProductController {
         List<Product> combinedProducts = new ArrayList<>();
         combinedProducts.addAll(productsMercadona);
         combinedProducts.addAll(productsConsum);
+        
+        List<Product> res = productService.sortProductsByPrice(combinedProducts, true);
 
-        return combinedProducts;
+        return res;
     }
 
 }
