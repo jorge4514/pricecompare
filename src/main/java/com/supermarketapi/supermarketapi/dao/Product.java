@@ -8,7 +8,8 @@ public class Product {
     private String share_url;
     private String picture;
     private String market;
-    private double unit_size;
+    private double price_unit;
+    private String unit;
 
 
     // Constructor
@@ -87,13 +88,23 @@ public class Product {
 		this.market = market;
 	}
 
-	public double getUnit_size() {
-		return unit_size;
+	public double getPrice_unit() {
+		return price_unit;
 	}
 
-	public void setUnit_size(double unit_size) {
-		this.unit_size = unit_size;
+	public void setPrice_unit(double price_unit) {
+		this.price_unit = price_unit;
 	}
+
+	public String getUnit() {
+		return unit;
+	}
+
+	public void setUnit(String unit) {
+		this.unit = unit;
+	}
+
+	
 	
 	
 }

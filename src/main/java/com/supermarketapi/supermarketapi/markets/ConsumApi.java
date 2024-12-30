@@ -98,15 +98,26 @@ public class ConsumApi extends BaseSupermarketApi {
                 Map<String, Object> priceData = (Map<String, Object>) productData.get("priceData");
                 List<Map<String, Object>> prices = (List<Map<String, Object>>) priceData.get("prices");
                 double price = 0.0;
+                double price_unit = 0.0;
                 if (prices != null && !prices.isEmpty()) {
                     Map<String, Object> priceValue = prices.get(0); // Suponiendo que hay un solo precio
                     Map<String, Object> priceAmount = (Map<String, Object>) priceValue.get("value");
                     double centAmount = (double) priceAmount.get("centAmount");
+                    double centUnitAmount = (double) priceAmount.get("centUnitAmount");
                     price = centAmount; // Convertir el precio en centavos a euros
+                    price_unit = centUnitAmount;
                 }
+                
+                String unitText = (String) priceData.get("unitPriceUnitType");
+	             // Obtener la última letra
+	             char lastChar = unitText.charAt(unitText.length() - 1);	
+	             // Convertir a String si lo necesitas como un String
+	             String unit = String.valueOf(lastChar);
 
                 // Crear la instancia de Product y añadirla a la lista
                 Product product = new Product(name, brand, price, 0.0, shareUrl, picture, "consum");
+                product.setUnit(unit);
+                product.setPrice_unit(price_unit);
                 products.add(product);
             }
 

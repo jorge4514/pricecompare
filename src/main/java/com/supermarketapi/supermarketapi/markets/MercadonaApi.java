@@ -37,9 +37,10 @@ public class MercadonaApi extends BaseSupermarketApi {
      */
     public List<Product> searchProducts(String query) {
         // Construir el JSON del cuerpo de la solicitud POST
-        String params = String.format(
-                "{\"params\":\"query=%s&clickAnalytics=true&analyticsTags=%%5B%%22web%%22%%5D&getRankingInfo=true\"}",
-                query);
+    	String params = String.format(
+    		    "{\"params\":\"query=%s&clickAnalytics=true&analyticsTags=%%5B%%22web%%22%%5D&getRankingInfo=true&queryType=prefixLast\"}",
+    		    query);
+
 
         // Construir la URL completa con los parámetros que serían los headers
         String url = String.format("%s?x-algolia-agent=%s&x-algolia-application-id=%s&x-algolia-api-key=%s",
@@ -72,7 +73,22 @@ public class MercadonaApi extends BaseSupermarketApi {
                 String brand = (String) hit.get("brand");
                 double price = Double.parseDouble((String) ((Map<String, Object>) hit.get("price_instructions")).get("unit_price"));
                 String previousPriceStr = (String) ((Map<String, Object>) hit.get("price_instructions")).get("previous_unit_price");
-                double unit_size = (double) ((Map<String, Object>) hit.get("price_instructions")).get("unit_size");
+                
+                double bulk_price = 0;
+                if (((Map<String, Object>) hit.get("price_instructions")).get("bulk_price") != null) {
+                    Object bulkPriceObj = ((Map<String, Object>) hit.get("price_instructions")).get("bulk_price");
+                    if (bulkPriceObj instanceof String) {
+                        bulk_price = Double.parseDouble((String) bulkPriceObj);
+                    } else if (bulkPriceObj instanceof Number) {
+                        bulk_price = ((Number) bulkPriceObj).doubleValue();
+                    }
+                }
+                String unit = "";
+                if(((Map<String, Object>) hit.get("price_instructions")).get("reference_format") != null) {
+                	unit = (String) ((Map<String, Object>) hit.get("price_instructions")).get("reference_format");
+                }
+                
+                
                 double previous_unit_price = 0.0;
 
                 if (previousPriceStr != null) {
@@ -89,7 +105,8 @@ public class MercadonaApi extends BaseSupermarketApi {
 
                 // Crear la instancia de Product y añadirla a la lista
                 Product product = new Product(name, brand, price, previous_unit_price, shareUrl, picture, "mercadona");
-                product.setUnit_size(unit_size);
+                product.setPrice_unit(bulk_price);
+                product.setUnit(unit);
                 products.add(product);
             }
 

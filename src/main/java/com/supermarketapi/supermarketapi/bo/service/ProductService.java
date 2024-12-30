@@ -12,36 +12,27 @@ import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
-    private List<Product> products = new ArrayList<>();
+	private List<Product> products = new ArrayList<>();
 
-    public ProductService() {
-        
-    }
+	public ProductService() {
 
-    public List<Product> searchProductByName(String name) {
-        return products.stream()
-                .filter(p -> p.getName().toLowerCase().contains(name.toLowerCase()))
-                .collect(Collectors.toList());
-    }
-    
-    public List<Product> sortProductsByPrice(List<Product> products, boolean ascending) {
-        Comparator<Product> priceComparator = Comparator.comparing(product -> {
-            Double unitSize = product.getUnit_size(); // Asegúrate de que este método devuelva un Double
-            if (unitSize != null && unitSize > 0) {
-                return product.getPrice() / unitSize; // Precio por unidad
-            } else {
-                return product.getPrice(); // Solo el precio si unitSize es null o 0
-            }
-        });
-        
-        if (!ascending) {
-            priceComparator = priceComparator.reversed();
-        }
-        
-        return products.stream()
-                .sorted(priceComparator)
-                .collect(Collectors.toList());
-    }
+	}
 
+	public List<Product> searchProductByName(String name) {
+		return products.stream().filter(p -> p.getName().toLowerCase().contains(name.toLowerCase()))
+				.collect(Collectors.toList());
+	}
+
+	public List<Product> sortProductsByPrice(List<Product> products, boolean ascending) {
+		Comparator<Product> priceComparator = Comparator.comparing(product -> {
+			return product.getPrice(); 
+		});
+
+		if (!ascending) {
+			priceComparator = priceComparator.reversed();
+		}
+
+		return products.stream().sorted(priceComparator).collect(Collectors.toList());
+	}
 
 }
